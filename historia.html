@@ -128,3 +128,134 @@
   </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historia - FutFactos</title>
+  <link rel="stylesheet" href="css/historia.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ff4500" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="hero-header">
+    <h1>Historia del Fútbol ⚽</h1>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="equipos.html" class="nav-link">Equipos</a></li>
+        <li><a href="jugadores.html" class="nav-link">Jugadores</a></li>
+        <li><a href="clasicos.html" class="nav-link">Clásicos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Línea de tiempo -->
+    <section id="historia" class="section">
+      <h2>🗺️ Línea del Tiempo del Fútbol</h2>
+      <div class="timeline">
+        <!-- Aquí van los timeline-item como en la respuesta anterior (los mantienes iguales o añades más) -->
+        <div class="timeline-item"><h3>1872</h3><p>Primer partido internacional: Inglaterra vs. Escocia.</p></div>
+        <div class="timeline-item"><h3>1992</h3><p>Nace la UEFA Champions League moderna, reemplazando la Copa de Europa.</p></div>
+        <div class="timeline-item"><h3>2004</h3><p>Grecia gana inesperadamente la Eurocopa.</p></div>
+        <div class="timeline-item"><h3>2016</h3><p>Portugal gana su primera Euro liderado por Cristiano Ronaldo.</p></div>
+        <div class="timeline-item"><h3>2021</h3><p>Messi gana la Copa América con Argentina.</p></div>
+      </div>
+    </section>
+
+    <!-- Sección de gráficas -->
+    <section id="graficas" class="section">
+      <h2>📊 Datos Históricos en Gráficas</h2>
+
+      <div class="charts-container" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; padding: 20px 0;">
+        <!-- Selecciones con más Mundiales -->
+        <div style="width: 400px;">
+          <canvas id="mundialesChart"></canvas>
+        </div>
+
+        <!-- Clubes con más Champions -->
+        <div style="width: 400px;">
+          <canvas id="championsChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de datos curiosos -->
+    <section id="curiosidades" class="section">
+      <h2>📌 Datos Curiosos y Récords</h2>
+      <ul>
+        <li>⚽ El gol más rápido en un Mundial fue de Hakan Şükür (11 segundos - 2002).</li>
+        <li>🏟️ El estadio con mayor capacidad es el Rungrado 1st of May en Corea del Norte (114,000).</li>
+        <li>👟 Lionel Messi es el jugador con más Balones de Oro (8 hasta 2023).</li>
+        <li>🔥 Cristiano Ronaldo es el máximo goleador en la historia del fútbol profesional (más de 870 goles).</li>
+        <li>🥅 El partido con más goles fue Australia 31-0 Samoa Americana (2001).</li>
+        <li>🌍 El fútbol se practica en más de 200 países del mundo.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 FutFactos - ¡Vive el fútbol!</p>
+  </footer>
+
+  <!-- Gráficas Chart.js -->
+  <script>
+    // Mundial Chart
+    const ctx1 = document.getElementById('mundialesChart').getContext('2d');
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['Brasil', 'Alemania', 'Italia', 'Argentina', 'Francia', 'Uruguay', 'España', 'Inglaterra'],
+        datasets: [{
+          label: 'Copas del Mundo',
+          data: [5, 4, 4, 3, 2, 2, 1, 1],
+          backgroundColor: 'rgba(255, 99, 132, 0.6)',
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Selecciones con más Copas del Mundo',
+            font: {
+              size: 16
+            }
+          }
+        }
+      }
+    });
+
+    // Champions Chart
+    const ctx2 = document.getElementById('championsChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Real Madrid', 'AC Milan', 'Bayern Munich', 'Liverpool', 'Barcelona', 'Ajax', 'PSG'],
+        datasets: [{
+          label: 'Champions League ganadas',
+          data: [14, 7, 6, 6, 5, 4, 1],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Clubes con más Champions League',
+            font: {
+              size: 16
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
