@@ -1,0 +1,808 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Patrón de campo de fútbol */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(90deg, transparent 49%, rgba(248, 249, 250, 0.05) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(248, 249, 250, 0.05) 50%, transparent 51%);
+      background-size: 50px 50px;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Líneas de campo de fútbol en el fondo */
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(90deg, #2d5016 0%, #4a7c59 25%, #2d5016 50%, #4a7c59 75%, #2d5016 100%);
+      background-size: 40px 100%;
+      z-index: -1;
+      opacity: 0.6;
+      border-top: 2px solid rgba(248, 249, 250, 0.2);
+    }
+
+    .hero-header {
+      background: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(45, 80, 22, 0.4);
+      overflow: hidden;
+      border-bottom: 4px solid #ffb700;
+    }
+
+    .hero-header::before {
+      content: '⚽';
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.1;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      animation: bounce 3s ease-in-out infinite;
+    }
+
+    .hero-header::after {
+      content: '🏆';
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.1;
+      top: 30%;
+      right: 10%;
+      animation: bounce 3s ease-in-out infinite 1.5s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-60%) scale(1.1); }
+    }
+
+    .hero-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+      letter-spacing: 3px;
+      color: #f8f9fa;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      background: rgba(248, 249, 250, 0.1);
+      border: 2px solid transparent;
+      backdrop-filter: blur(10px);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      background: #ffb700;
+      color: #2d5016;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 183, 0, 0.4);
+      border-color: #ffd60a;
+      font-weight: 900;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: rgba(248, 249, 250, 0.95);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(125, 176, 105, 0.3);
+      box-shadow: 0 12px 40px rgba(45, 80, 22, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #2d5016, #ffb700, #4a7c59, #ffb700, #2d5016);
+      background-size: 200% 100%;
+      animation: slideGradient 3s ease-in-out infinite;
+    }
+
+    @keyframes slideGradient {
+      0% { background-position: 200% 0%; }
+      50% { background-position: -200% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #2d5016;
+      text-shadow: 2px 2px 4px rgba(45, 80, 22, 0.3);
+      letter-spacing: 2px;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #2d5016, #ffb700, #4a7c59, #ffb700, #2d5016);
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(45, 80, 22, 0.5);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(248, 249, 250, 0.9);
+      border-radius: 15px;
+      width: 45%;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(125, 176, 105, 0.3);
+      transition: all 0.3s ease;
+      color: #2d5016;
+      box-shadow: 0 8px 25px rgba(45, 80, 22, 0.2);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(45, 80, 22, 0.4);
+      background: rgba(255, 183, 0, 0.1);
+      border-color: #ffb700;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 55%;
+    }
+
+    .timeline-item::before {
+      content: '⚽';
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 30px;
+      background: #2d5016;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 3px solid #ffb700;
+      box-shadow: 0 0 15px rgba(45, 80, 22, 0.6);
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -45px;
+      transform: translateY(-50%);
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -45px;
+      transform: translateY(-50%);
+    }
+
+    .timeline-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: #2d5016;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(45, 80, 22, 0.3);
+    }
+
+    .timeline-item p {
+      line-height: 1.6;
+      font-weight: 500;
+      color: #495057;
+    }
+
+    .charts-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .charts-container > div {
+      width: 400px;
+      padding: 20px;
+      background: rgba(248, 249, 250, 0.9);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(125, 176, 105, 0.3);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(45, 80, 22, 0.2);
+    }
+
+    .charts-container > div:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(45, 80, 22, 0.4);
+      background: rgba(255, 183, 0, 0.1);
+      border-color: #ffb700;
+    }
+
+    #curiosidades ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      padding: 0;
+    }
+
+    #curiosidades li {
+      padding: 1.5rem;
+      background: rgba(248, 249, 250, 0.9);
+      border-radius: 12px;
+      border-left: 5px solid #2d5016;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(125, 176, 105, 0.2);
+      position: relative;
+      overflow: hidden;
+      color: #495057;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1);
+    }
+
+    #curiosidades li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 183, 0, 0.1);
+      transition: width 0.3s ease;
+    }
+
+    #curiosidades li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(45, 80, 22, 0.3);
+      border-left-color: #ffb700;
+      background: rgba(255, 183, 0, 0.05);
+    }
+
+    #curiosidades li:hover::before {
+      width: 100%;
+    }
+
+    footer {
+      background: rgba(45, 80, 22, 0.95);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+      backdrop-filter: blur(10px);
+      border-top: 3px solid #ffb700;
+      box-shadow: 0 -5px 20px rgba(45, 80, 22, 0.3);
+    }
+
+    footer p {
+      font-size: 1.1rem;
+      color: #f8f9fa;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-menu {
+        gap: 1rem;
+      }
+
+      .nav-menu a {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: calc(100% - 60px);
+        left: 40px !important;
+      }
+
+      .timeline-item::before {
+        left: -35px !important;
+      }
+
+      .charts-container > div {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+      }
+
+      #curiosidades ul {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Efectos adicionales de fútbol */
+    @keyframes kickBall {
+      0% { transform: rotate(0deg) translateX(0); }
+      25% { transform: rotate(90deg) translateX(10px); }
+      50% { transform: rotate(180deg) translateX(0); }
+      75% { transform: rotate(270deg) translateX(-10px); }
+      100% { transform: rotate(360deg) translateX(0); }
+    }
+
+    .section:hover::after {
+      content: '⚽';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      animation: kickBall 2s ease-in-out infinite;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Patrón de campo de fútbol */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(90deg, transparent 49%, rgba(248, 249, 250, 0.05) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(248, 249, 250, 0.05) 50%, transparent 51%);
+      background-size: 50px 50px;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Líneas de campo de fútbol en el fondo */
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(90deg, #2d5016 0%, #4a7c59 25%, #2d5016 50%, #4a7c59 75%, #2d5016 100%);
+      background-size: 40px 100%;
+      z-index: -1;
+      opacity: 0.6;
+      border-top: 2px solid rgba(248, 249, 250, 0.2);
+    }
+
+    .hero-header {
+      background: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(45, 80, 22, 0.4);
+      overflow: hidden;
+      border-bottom: 4px solid #ffb700;
+    }
+
+    .hero-header::before {
+      content: '⚽';
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.1;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      animation: bounce 3s ease-in-out infinite;
+    }
+
+    .hero-header::after {
+      content: '🏆';
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.1;
+      top: 30%;
+      right: 10%;
+      animation: bounce 3s ease-in-out infinite 1.5s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-60%) scale(1.1); }
+    }
+
+    .hero-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+      letter-spacing: 3px;
+      color: #f8f9fa;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      background: rgba(248, 249, 250, 0.1);
+      border: 2px solid transparent;
+      backdrop-filter: blur(10px);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      background: #ffb700;
+      color: #2d5016;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 183, 0, 0.4);
+      border-color: #ffd60a;
+      font-weight: 900;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: rgba(248, 249, 250, 0.95);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(125, 176, 105, 0.3);
+      box-shadow: 0 12px 40px rgba(45, 80, 22, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #2d5016, #ffb700, #4a7c59, #ffb700, #2d5016);
+      background-size: 200% 100%;
+      animation: slideGradient 3s ease-in-out infinite;
+    }
+
+    @keyframes slideGradient {
+      0% { background-position: 200% 0%; }
+      50% { background-position: -200% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #2d5016;
+      text-shadow: 2px 2px 4px rgba(45, 80, 22, 0.3);
+      letter-spacing: 2px;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #2d5016, #ffb700, #4a7c59, #ffb700, #2d5016);
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(45, 80, 22, 0.5);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(248, 249, 250, 0.9);
+      border-radius: 15px;
+      width: 45%;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(125, 176, 105, 0.3);
+      transition: all 0.3s ease;
+      color: #2d5016;
+      box-shadow: 0 8px 25px rgba(45, 80, 22, 0.2);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(45, 80, 22, 0.4);
+      background: rgba(255, 183, 0, 0.1);
+      border-color: #ffb700;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 55%;
+    }
+
+    .timeline-item::before {
+      content: '⚽';
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 30px;
+      background: #2d5016;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 3px solid #ffb700;
+      box-shadow: 0 0 15px rgba(45, 80, 22, 0.6);
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -45px;
+      transform: translateY(-50%);
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -45px;
+      transform: translateY(-50%);
+    }
+
+    .timeline-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: #2d5016;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(45, 80, 22, 0.3);
+    }
+
+    .timeline-item p {
+      line-height: 1.6;
+      font-weight: 500;
+      color: #495057;
+    }
+
+    .charts-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .charts-container > div {
+      width: 400px;
+      padding: 20px;
+      background: rgba(248, 249, 250, 0.9);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(125, 176, 105, 0.3);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(45, 80, 22, 0.2);
+    }
+
+    .charts-container > div:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(45, 80, 22, 0.4);
+      background: rgba(255, 183, 0, 0.1);
+      border-color: #ffb700;
+    }
+
+    #curiosidades ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      padding: 0;
+    }
+
+    #curiosidades li {
+      padding: 1.5rem;
+      background: rgba(248, 249, 250, 0.9);
+      border-radius: 12px;
+      border-left: 5px solid #2d5016;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(125, 176, 105, 0.2);
+      position: relative;
+      overflow: hidden;
+      color: #495057;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1);
+    }
+
+    #curiosidades li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 183, 0, 0.1);
+      transition: width 0.3s ease;
+    }
+
+    #curiosidades li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(45, 80, 22, 0.3);
+      border-left-color: #ffb700;
+      background: rgba(255, 183, 0, 0.05);
+    }
+
+    #curiosidades li:hover::before {
+      width: 100%;
+    }
+
+    footer {
+      background: rgba(45, 80, 22, 0.95);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+      backdrop-filter: blur(10px);
+      border-top: 3px solid #ffb700;
+      box-shadow: 0 -5px 20px rgba(45, 80, 22, 0.3);
+    }
+
+    footer p {
+      font-size: 1.1rem;
+      color: #f8f9fa;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-menu {
+        gap: 1rem;
+      }
+
+      .nav-menu a {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: calc(100% - 60px);
+        left: 40px !important;
+      }
+
+      .timeline-item::before {
+        left: -35px !important;
+      }
+
+      .charts-container > div {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+      }
+
+      #curiosidades ul {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Efectos adicionales de fútbol */
+    @keyframes kickBall {
+      0% { transform: rotate(0deg) translateX(0); }
+      25% { transform: rotate(90deg) translateX(10px); }
+      50% { transform: rotate(180deg) translateX(0); }
+      75% { transform: rotate(270deg) translateX(-10px); }
+      100% { transform: rotate(360deg) translateX(0); }
+    }
+
+    .section:hover::after {
+      content: '⚽';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      animation: kickBall 2s ease-in-out infinite;
+    }

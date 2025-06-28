@@ -1,0 +1,936 @@
+/* Reset y variables futbolísticas */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Colores inspirados en el fútbol */
+      --grass-green: #2d5016;
+      --field-green: #4a7c59;
+      --light-green: #7fb069;
+      --ball-white: #ffffff;
+      --line-white: #f8f9fa;
+      --goal-yellow: #ffd60a;
+      --referee-black: #1a1a1a;
+      --sky-blue: #219ebc;
+      --stadium-gray: #495057;
+      --victory-gold: #ffb700;
+
+      /* Gradientes temáticos */
+      --field-gradient: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+      --stadium-gradient: linear-gradient(135deg, #495057 0%, #343a40 100%);
+      --gold-gradient: linear-gradient(135deg, #ffb700 0%, #ffd60a 100%);
+
+      /* Sombras */
+      --shadow-field: 0 4px 20px rgba(45, 80, 22, 0.3);
+      --shadow-ball: 0 8px 25px rgba(0, 0, 0, 0.2);
+      --shadow-stadium: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+      --border-radius: 15px;
+      --transition: all 0.3s ease;
+    }
+
+    /* Tipografía deportiva */
+    body {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      line-height: 1.6;
+      color: var(--referee-black);
+      background:
+        radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Patrón de campo de fútbol sutil */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(90deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Navbar estilo estadio */
+    .navbar {
+      background: linear-gradient(135deg, var(--stadium-gray) 0%, #1e3a8a 100%);
+      box-shadow: 0 4px 20px rgba(45, 80, 22, 0.3);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 3px solid var(--field-green);
+    }
+
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--field-gradient);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+    }
+
+    /* Logo mejorado */
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--ball-white);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: -1px;
+      position: relative;
+    }
+
+    .logo::after {
+      content: '⚽';
+      font-size: 1.2rem;
+      margin-left: 8px;
+      animation: rotate 3s linear infinite;
+      color: var(--goal-yellow);
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Enlaces de navegación */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--ball-white);
+      font-weight: 600;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: 2px solid transparent;
+      display: block;
+    }
+
+    .nav-link:hover {
+      background: var(--field-green);
+      color: var(--goal-yellow);
+      border-color: var(--goal-yellow);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 214, 10, 0.3);
+    }
+
+    /* Botón de menú móvil */
+    .mobile-menu-btn {
+      display: none;
+      background: var(--field-green);
+      border: none;
+      color: var(--ball-white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      border: 2px solid var(--goal-yellow);
+    }
+
+    .mobile-menu-btn:hover {
+      background: var(--grass-green);
+      transform: scale(1.1);
+    }
+
+    /* Main content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 1rem 2rem 1rem;
+    }
+
+    /* Título principal */
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--field-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 2px 2px 4px rgba(45, 80, 22, 0.3);
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      width: 120px;
+      height: 6px;
+      background: var(--gold-gradient);
+      transform: translateX(-50%);
+      border-radius: 3px;
+      box-shadow: 0 2px 10px rgba(255, 183, 0, 0.4);
+    }
+
+    /* Contenedor de países */
+    .countries-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Acordeones estilo tarjetas de jugador */
+    .country-card {
+      background: var(--ball-white);
+      border: none;
+      border-radius: 20px;
+      padding: 0;
+      box-shadow: var(--shadow-ball);
+      border-left: 6px solid var(--field-green);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+      opacity: 0;
+      animation: bounceIn 0.8s ease-out forwards;
+    }
+
+    .country-card::before {
+      content: '🏆';
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2rem;
+      opacity: 0.2;
+      z-index: 1;
+    }
+
+    .country-card:nth-child(1) { animation-delay: 0.1s; }
+    .country-card:nth-child(2) { animation-delay: 0.2s; }
+    .country-card:nth-child(3) { animation-delay: 0.3s; }
+    .country-card:nth-child(4) { animation-delay: 0.4s; }
+    .country-card:nth-child(5) { animation-delay: 0.5s; }
+    .country-card:nth-child(6) { animation-delay: 0.6s; }
+    .country-card:nth-child(7) { animation-delay: 0.7s; }
+    .country-card:nth-child(8) { animation-delay: 0.8s; }
+
+    .country-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-stadium);
+      border-left-color: var(--victory-gold);
+    }
+
+    .country-card[open] {
+      border-left-color: var(--victory-gold);
+      background: linear-gradient(135deg, rgba(125, 176, 105, 0.05) 0%, var(--ball-white) 100%);
+    }
+
+    /* Summary estilo capitán de equipo */
+    .country-header {
+      background: var(--field-gradient);
+      color: var(--ball-white);
+      padding: 1.5rem 2rem;
+      font-size: 1.3rem;
+      font-weight: 800;
+      cursor: pointer;
+      border-radius: 20px 20px 0 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .country-header:hover {
+      background: linear-gradient(135deg, #4a7c59 0%, #2d5016 50%, #7fb069 100%);
+    }
+
+    .country-header::marker {
+      display: none;
+    }
+
+    .country-header::after {
+      content: '▼';
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: var(--transition);
+      color: var(--goal-yellow);
+      font-size: 1.2rem;
+    }
+
+    .country-card[open] .country-header::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Listas de jugadores */
+    .players-list {
+      list-style: none;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    .player-item {
+      background: linear-gradient(135deg, rgba(74, 124, 89, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--victory-gold);
+      font-size: 1rem;
+      line-height: 1.6;
+      transition: var(--transition);
+      position: relative;
+      opacity: 0;
+      animation: slideInPlayer 0.6s ease-out forwards;
+    }
+
+    .player-item:nth-child(1) { animation-delay: 0.1s; }
+    .player-item:nth-child(2) { animation-delay: 0.2s; }
+    .player-item:nth-child(3) { animation-delay: 0.3s; }
+    .player-item:nth-child(4) { animation-delay: 0.4s; }
+    .player-item:nth-child(5) { animation-delay: 0.5s; }
+    .player-item:nth-child(6) { animation-delay: 0.6s; }
+    .player-item:nth-child(7) { animation-delay: 0.7s; }
+
+    @keyframes slideInPlayer {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .player-item::before {
+      content: '⚽';
+      margin-right: 12px;
+      font-size: 1.2rem;
+      color: var(--field-green);
+    }
+
+    .player-item:hover {
+      background: linear-gradient(135deg, rgba(74, 124, 89, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+      transform: translateX(10px);
+      border-left-color: var(--grass-green);
+      box-shadow: 0 4px 15px rgba(74, 124, 89, 0.2);
+    }
+
+    .player-name {
+      color: var(--grass-green);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    /* Imagen final */
+    .hero-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-top: 3rem;
+      box-shadow: var(--shadow-stadium);
+      border: 4px solid var(--field-green);
+      transition: var(--transition);
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 50px rgba(45, 80, 22, 0.4);
+    }
+
+    /* Animaciones */
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(30px);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-10px);
+      }
+      70% {
+        transform: scale(0.9) translateY(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Scroll suave */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 78px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 78px);
+        background: linear-gradient(135deg, var(--stadium-gray) 0%, #1e3a8a 100%);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 0;
+        transition: var(--transition);
+        box-shadow: var(--shadow-stadium);
+        border-top: 3px solid var(--field-green);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .main-content {
+        padding: 5rem 1rem 2rem 1rem;
+      }
+
+      .country-header {
+        padding: 1.2rem 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .player-item {
+        padding: 1.2rem;
+        font-size: 0.95rem;
+      }
+
+      .hero-image {
+        height: 200px;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.8rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .country-header {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+
+      .player-item {
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .main-content {
+        padding: 4.5rem 0.5rem 1.5rem 0.5rem;
+      }
+    }
+/* Reset y variables futbolísticas */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Colores inspirados en el fútbol */
+      --grass-green: #2d5016;
+      --field-green: #4a7c59;
+      --light-green: #7fb069;
+      --ball-white: #ffffff;
+      --line-white: #f8f9fa;
+      --goal-yellow: #ffd60a;
+      --referee-black: #1a1a1a;
+      --sky-blue: #219ebc;
+      --stadium-gray: #495057;
+      --victory-gold: #ffb700;
+
+      /* Gradientes temáticos */
+      --field-gradient: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+      --stadium-gradient: linear-gradient(135deg, #495057 0%, #343a40 100%);
+      --gold-gradient: linear-gradient(135deg, #ffb700 0%, #ffd60a 100%);
+
+      /* Sombras */
+      --shadow-field: 0 4px 20px rgba(45, 80, 22, 0.3);
+      --shadow-ball: 0 8px 25px rgba(0, 0, 0, 0.2);
+      --shadow-stadium: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+      --border-radius: 15px;
+      --transition: all 0.3s ease;
+    }
+
+    /* Tipografía deportiva */
+    body {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      line-height: 1.6;
+      color: var(--referee-black);
+      background:
+        radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Patrón de campo de fútbol sutil */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(90deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Navbar estilo estadio */
+    .navbar {
+      background: linear-gradient(135deg, var(--stadium-gray) 0%, #1e3a8a 100%);
+      box-shadow: 0 4px 20px rgba(45, 80, 22, 0.3);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 3px solid var(--field-green);
+    }
+
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--field-gradient);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+    }
+
+    /* Logo mejorado */
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--ball-white);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: -1px;
+      position: relative;
+    }
+
+    .logo::after {
+      content: '⚽';
+      font-size: 1.2rem;
+      margin-left: 8px;
+      animation: rotate 3s linear infinite;
+      color: var(--goal-yellow);
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Enlaces de navegación */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--ball-white);
+      font-weight: 600;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: 2px solid transparent;
+      display: block;
+    }
+
+    .nav-link:hover {
+      background: var(--field-green);
+      color: var(--goal-yellow);
+      border-color: var(--goal-yellow);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 214, 10, 0.3);
+    }
+
+    /* Botón de menú móvil */
+    .mobile-menu-btn {
+      display: none;
+      background: var(--field-green);
+      border: none;
+      color: var(--ball-white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      border: 2px solid var(--goal-yellow);
+    }
+
+    .mobile-menu-btn:hover {
+      background: var(--grass-green);
+      transform: scale(1.1);
+    }
+
+    /* Main content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 1rem 2rem 1rem;
+    }
+
+    /* Título principal */
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--field-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 2px 2px 4px rgba(45, 80, 22, 0.3);
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      width: 120px;
+      height: 6px;
+      background: var(--gold-gradient);
+      transform: translateX(-50%);
+      border-radius: 3px;
+      box-shadow: 0 2px 10px rgba(255, 183, 0, 0.4);
+    }
+
+    /* Contenedor de países */
+    .countries-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Acordeones estilo tarjetas de jugador */
+    .country-card {
+      background: var(--ball-white);
+      border: none;
+      border-radius: 20px;
+      padding: 0;
+      box-shadow: var(--shadow-ball);
+      border-left: 6px solid var(--field-green);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+      opacity: 0;
+      animation: bounceIn 0.8s ease-out forwards;
+    }
+
+    .country-card::before {
+      content: '🏆';
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2rem;
+      opacity: 0.2;
+      z-index: 1;
+    }
+
+    .country-card:nth-child(1) { animation-delay: 0.1s; }
+    .country-card:nth-child(2) { animation-delay: 0.2s; }
+    .country-card:nth-child(3) { animation-delay: 0.3s; }
+    .country-card:nth-child(4) { animation-delay: 0.4s; }
+    .country-card:nth-child(5) { animation-delay: 0.5s; }
+    .country-card:nth-child(6) { animation-delay: 0.6s; }
+    .country-card:nth-child(7) { animation-delay: 0.7s; }
+    .country-card:nth-child(8) { animation-delay: 0.8s; }
+
+    .country-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-stadium);
+      border-left-color: var(--victory-gold);
+    }
+
+    .country-card[open] {
+      border-left-color: var(--victory-gold);
+      background: linear-gradient(135deg, rgba(125, 176, 105, 0.05) 0%, var(--ball-white) 100%);
+    }
+
+    /* Summary estilo capitán de equipo */
+    .country-header {
+      background: var(--field-gradient);
+      color: var(--ball-white);
+      padding: 1.5rem 2rem;
+      font-size: 1.3rem;
+      font-weight: 800;
+      cursor: pointer;
+      border-radius: 20px 20px 0 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .country-header:hover {
+      background: linear-gradient(135deg, #4a7c59 0%, #2d5016 50%, #7fb069 100%);
+    }
+
+    .country-header::marker {
+      display: none;
+    }
+
+    .country-header::after {
+      content: '▼';
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: var(--transition);
+      color: var(--goal-yellow);
+      font-size: 1.2rem;
+    }
+
+    .country-card[open] .country-header::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Listas de jugadores */
+    .players-list {
+      list-style: none;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    .player-item {
+      background: linear-gradient(135deg, rgba(74, 124, 89, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--victory-gold);
+      font-size: 1rem;
+      line-height: 1.6;
+      transition: var(--transition);
+      position: relative;
+      opacity: 0;
+      animation: slideInPlayer 0.6s ease-out forwards;
+    }
+
+    .player-item:nth-child(1) { animation-delay: 0.1s; }
+    .player-item:nth-child(2) { animation-delay: 0.2s; }
+    .player-item:nth-child(3) { animation-delay: 0.3s; }
+    .player-item:nth-child(4) { animation-delay: 0.4s; }
+    .player-item:nth-child(5) { animation-delay: 0.5s; }
+    .player-item:nth-child(6) { animation-delay: 0.6s; }
+    .player-item:nth-child(7) { animation-delay: 0.7s; }
+
+    @keyframes slideInPlayer {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .player-item::before {
+      content: '⚽';
+      margin-right: 12px;
+      font-size: 1.2rem;
+      color: var(--field-green);
+    }
+
+    .player-item:hover {
+      background: linear-gradient(135deg, rgba(74, 124, 89, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+      transform: translateX(10px);
+      border-left-color: var(--grass-green);
+      box-shadow: 0 4px 15px rgba(74, 124, 89, 0.2);
+    }
+
+    .player-name {
+      color: var(--grass-green);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    /* Imagen final */
+    .hero-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-top: 3rem;
+      box-shadow: var(--shadow-stadium);
+      border: 4px solid var(--field-green);
+      transition: var(--transition);
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 50px rgba(45, 80, 22, 0.4);
+    }
+
+    /* Animaciones */
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(30px);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-10px);
+      }
+      70% {
+        transform: scale(0.9) translateY(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Scroll suave */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 78px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 78px);
+        background: linear-gradient(135deg, var(--stadium-gray) 0%, #1e3a8a 100%);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 0;
+        transition: var(--transition);
+        box-shadow: var(--shadow-stadium);
+        border-top: 3px solid var(--field-green);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .main-content {
+        padding: 5rem 1rem 2rem 1rem;
+      }
+
+      .country-header {
+        padding: 1.2rem 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .player-item {
+        padding: 1.2rem;
+        font-size: 0.95rem;
+      }
+
+      .hero-image {
+        height: 200px;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.8rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .country-header {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+
+      .player-item {
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .main-content {
+        padding: 4.5rem 0.5rem 1.5rem 0.5rem;
+      }
+    }

@@ -1,0 +1,73 @@
+<div class="games-container">
+  <!-- Juego 1: Tirador de Penales -->
+  <div class="penalti-card">
+    <div class="encabezado">
+      <h2>⚽ Tiros Penales: ¡Desafía al Portero!</h2>
+      <p class="subtitulo">Elige una dirección para lanzar tu disparo</p>
+    </div>
+
+    <div class="cancha">
+      <div class="porteria">
+        <div class="portero" [class.animate]="mostrarAnimacionPortero" [style.left]="posicionPortero">
+          <div class="portero-cuerpo"></div>
+          <div class="portero-manos"></div>
+        </div>
+        <div class="areas-porteria">
+          <div class="area-porteria izquierda" (click)="patear('izquierda')" #areaIzquierda></div>
+          <div class="area-porteria centro" (click)="patear('centro')" #areaCentro></div>
+          <div class="area-porteria derecha" (click)="patear('derecha')" #areaDerecha></div>
+        </div>
+      </div>
+
+      <div class="balon-container" #balonContainer>
+        <div class="balon"
+             draggable="true"
+             (dragstart)="empezarArrastre($event)"
+             (click)="patearBalon()"
+             [class.pateado]="balonPateado"
+             [style.transform]="transformBalon"
+             [style.transition]="transitionBalon">
+          ⚽
+        </div>
+      </div>
+    </div>
+
+    <p class="resultado" [class.exito]="resultadoExito" [class.fallo]="!resultadoExito">{{ resultado }}</p>
+
+    <div class="marcador">
+      <p><strong>Goles:</strong> {{ goles }} / {{ tiros }} tiros ({{ porcentajeGoles }}% efectividad)</p>
+    </div>
+
+    <button class="reiniciar" (click)="reiniciar()">🔁 Reiniciar Juego</button>
+  </div>
+
+  <!-- Juego 2: Portero -->
+ <!--<div class="penalti-card">
+    <div class="encabezado">
+      <h2>🧤 Ataja Penales: ¡Sé el Portero!</h2>
+      <p class="subtitulo">Haz clic en la dirección donde creas que patearán</p>
+    </div>
+
+    <div class="cancha-portero">
+      <div class="porteria-portero">
+        <div class="jugador" [class.pateando]="mostrarJugadorPateando">⚽</div>
+        <div class="areas-porteria-portero">
+          <div class="area-porteria-portero izquierda" (click)="atajar('izquierda')"></div>
+          <div class="area-porteria-portero centro" (click)="atajar('centro')"></div>
+          <div class="area-porteria-portero derecha" (click)="atajar('derecha')"></div>
+        </div>
+        <div class="guante-portero" [style.left]="posicionGuante" [class.atajando]="mostrarAnimacionGuante">🧤</div>
+      </div>
+    </div>
+
+    <p class="resultado-portero" [class.exito]="resultadoExitoPortero" [class.fallo]="!resultadoExitoPortero">
+      {{ resultadoPortero }}
+    </p>
+
+    <div class="marcador-portero">
+      <p><strong>Atajadas:</strong> {{ atajadas }} / {{ tirosPortero }} tiros ({{ porcentajeAtajadas }}% efectividad)</p>
+    </div>
+
+    <button class="reiniciar" (click)="reiniciarPortero()">🔁 Reiniciar Juego</button>
+  </div>
+</div>-->

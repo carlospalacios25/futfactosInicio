@@ -1,0 +1,592 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #6c7666 0%, #4a7c59 50%, #7fb069 100%);
+  color: #333;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Patrón de campo de fútbol */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(90deg, transparent 49%, rgba(248, 249, 250, 0.1) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(248, 249, 250, 0.1) 50%, transparent 51%);
+  background-size: 50px 50px;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Líneas de campo */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #2d5016 0%, #4a7c59 25%, #2d5016 50%, #4a7c59 75%, #2d5016 100%);
+  background-size: 40px 100%;
+  z-index: -1;
+  opacity: 0.7;
+  border-top: 2px solid rgba(248, 249, 250, 0.3);
+}
+
+.hero-header {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(45, 80, 22, 0.3);
+  border-bottom: 3px solid #ffb700;
+}
+
+.hero-header::before {
+  content: '⚽';
+  position: absolute;
+  font-size: 80px;
+  opacity: 0.15;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  animation: bounce 4s ease-in-out infinite;
+}
+
+.hero-header::after {
+  content: '🏆';
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.15;
+  top: 30%;
+  right: 5%;
+  animation: bounce 4s ease-in-out infinite 2s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-60%) scale(1.05); }
+}
+
+.hero-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+  color: #f8f9fa;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(248, 249, 250, 0.15);
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+  background: #ffb700;
+  color: #2d5016;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 183, 0, 0.3);
+  border-color: #ffd60a;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #2d5016;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(45, 80, 22, 0.2);
+}
+
+.equipo-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.equipo-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(248, 249, 250, 0.95);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.equipo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(45, 80, 22, 0.3);
+  border-color: #ffb700;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.equipo-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #2d5016, #ffb700, #4a7c59);
+  background-size: 200% 100%;
+  animation: slideGradient 3s ease-in-out infinite;
+}
+
+@keyframes slideGradient {
+  0% { background-position: 200% 0%; }
+  50% { background-position: -200% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+.equipo-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.equipo-image img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 3px solid #2d5016;
+  background: #fff;
+  padding: 4px;
+  transition: transform 0.3s ease;
+}
+
+.equipo-item:hover .equipo-image img {
+  transform: scale(1.1);
+}
+
+.equipo-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #2d5016;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.equipo-content p {
+  color: #495057;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.equipo-content .palmares {
+  font-style: italic;
+  color: #7fb069;
+}
+
+/* Efectos de fútbol */
+@keyframes kickBall {
+  0% { transform: rotate(0deg) translateX(0); }
+  25% { transform: rotate(90deg) translateX(10px); }
+  50% { transform: rotate(180deg) translateX(0); }
+  75% { transform: rotate(270deg) translateX(-10px); }
+  100% { transform: rotate(360deg) translateX(0); }
+}
+
+.equipo-item:hover::after {
+  content: '⚽';
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  animation: kickBall 2s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-header h1 {
+    font-size: 2rem;
+  }
+
+  .nav-menu {
+    gap: 0.8rem;
+  }
+
+  .nav-menu a {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .equipo-section {
+    grid-template-columns: 1fr;
+  }
+
+  .equipo-item {
+    padding: 1rem;
+  }
+
+  .equipo-image img {
+    width: 60px;
+    height: 60px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-header {
+    padding: 1.5rem 0;
+  }
+
+  .hero-header::before, .hero-header::after {
+    font-size: 50px;
+  }
+
+  .equipo-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .equipo-content p {
+    font-size: 0.9rem;
+  }
+
+  .equipo-image img {
+    width: 50px;
+    height: 50px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #6c7666 0%, #4a7c59 50%, #7fb069 100%);
+  color: #333;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Patrón de campo de fútbol */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(90deg, transparent 49%, rgba(248, 249, 250, 0.1) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(248, 249, 250, 0.1) 50%, transparent 51%);
+  background-size: 50px 50px;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Líneas de campo */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #2d5016 0%, #4a7c59 25%, #2d5016 50%, #4a7c59 75%, #2d5016 100%);
+  background-size: 40px 100%;
+  z-index: -1;
+  opacity: 0.7;
+  border-top: 2px solid rgba(248, 249, 250, 0.3);
+}
+
+.hero-header {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(45, 80, 22, 0.3);
+  border-bottom: 3px solid #ffb700;
+}
+
+.hero-header::before {
+  content: '⚽';
+  position: absolute;
+  font-size: 80px;
+  opacity: 0.15;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  animation: bounce 4s ease-in-out infinite;
+}
+
+.hero-header::after {
+  content: '🏆';
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.15;
+  top: 30%;
+  right: 5%;
+  animation: bounce 4s ease-in-out infinite 2s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-60%) scale(1.05); }
+}
+
+.hero-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+  color: #f8f9fa;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(248, 249, 250, 0.15);
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+  background: #ffb700;
+  color: #2d5016;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 183, 0, 0.3);
+  border-color: #ffd60a;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #2d5016;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(45, 80, 22, 0.2);
+}
+
+.equipo-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.equipo-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(248, 249, 250, 0.95);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.equipo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(45, 80, 22, 0.3);
+  border-color: #ffb700;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.equipo-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #2d5016, #ffb700, #4a7c59);
+  background-size: 200% 100%;
+  animation: slideGradient 3s ease-in-out infinite;
+}
+
+@keyframes slideGradient {
+  0% { background-position: 200% 0%; }
+  50% { background-position: -200% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+.equipo-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.equipo-image img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 3px solid #2d5016;
+  background: #fff;
+  padding: 4px;
+  transition: transform 0.3s ease;
+}
+
+.equipo-item:hover .equipo-image img {
+  transform: scale(1.1);
+}
+
+.equipo-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #2d5016;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.equipo-content p {
+  color: #495057;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.equipo-content .palmares {
+  font-style: italic;
+  color: #7fb069;
+}
+
+/* Efectos de fútbol */
+@keyframes kickBall {
+  0% { transform: rotate(0deg) translateX(0); }
+  25% { transform: rotate(90deg) translateX(10px); }
+  50% { transform: rotate(180deg) translateX(0); }
+  75% { transform: rotate(270deg) translateX(-10px); }
+  100% { transform: rotate(360deg) translateX(0); }
+}
+
+.equipo-item:hover::after {
+  content: '⚽';
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  animation: kickBall 2s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-header h1 {
+    font-size: 2rem;
+  }
+
+  .nav-menu {
+    gap: 0.8rem;
+  }
+
+  .nav-menu a {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .equipo-section {
+    grid-template-columns: 1fr;
+  }
+
+  .equipo-item {
+    padding: 1rem;
+  }
+
+  .equipo-image img {
+    width: 60px;
+    height: 60px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-header {
+    padding: 1.5rem 0;
+  }
+
+  .hero-header::before, .hero-header::after {
+    font-size: 50px;
+  }
+
+  .equipo-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .equipo-content p {
+    font-size: 0.9rem;
+  }
+
+  .equipo-image img {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,1145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colores inspirados en el fútbol */
+  --grass-green: #2d5016;
+  --field-green: #4a7c59;
+  --light-green: #7fb069;
+  --ball-white: #ffffff;
+  --line-white: #f8f9fa;
+  --goal-yellow: #ffd60a;
+  --referee-black: #1a1a1a;
+  --sky-blue: #219ebc;
+  --stadium-gray: #495057;
+  --victory-gold: #ffb700;
+
+  /* Gradientes temáticos */
+  --field-gradient: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+  --stadium-gradient: linear-gradient(135deg, #495057 0%, #343a40 100%);
+  --gold-gradient: linear-gradient(135deg, #ffb700 0%, #ffd60a 100%);
+
+  /* Sombras */
+  --shadow-field: 0 4px 20px rgba(45, 80, 22, 0.3);
+  --shadow-ball: 0 8px 25px rgba(0, 0, 0, 0.2);
+  --shadow-stadium: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+  --border-radius: 15px;
+  --transition: all 0.3s ease;
+}
+
+/* Tipografía deportiva */
+body {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  line-height: 1.6;
+  color: var(--referee-black);
+  background:
+    radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Patrón de campo de fútbol sutil */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(90deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Navbar estilo estadio */
+.navbar {
+  background: var(--ball-white);
+  box-shadow: 0 2px 15px rgba(45, 80, 22, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid var(--field-green);
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--field-gradient);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--grass-green);
+  text-shadow: 2px 2px 4px rgba(45, 80, 22, 0.3);
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.logo::after {
+  content: '⚽';
+  font-size: 1.2rem;
+  margin-left: 8px;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--stadium-gray);
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+}
+
+.nav-link:hover {
+  background: var(--field-green);
+  color: var(--ball-white);
+  border-color: var(--grass-green);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--field-green);
+  border: none;
+  color: var(--ball-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--grass-green);
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 20px;
+}
+
+/* Intro - Estilo campo de fútbol */
+.intro {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--field-gradient);
+  color: var(--ball-white);
+  border-radius: 25px;
+  box-shadow: var(--shadow-field);
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.intro::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.explore-btn {
+  background: var(--gold-gradient);
+  color: var(--referee-black);
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-ball);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.explore-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 183, 0, 0.4);
+  background: linear-gradient(135deg, #ffd60a 0%, #ffb700 100%);
+}
+
+/* Secciones con estilo de tarjetas de jugador */
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--grass-green);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 80px;
+  height: 4px;
+  background: var(--goal-yellow);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Stats - Estilo marcador */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-box {
+  background: var(--ball-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-ball);
+  border-left: 6px solid var(--field-green);
+  position: relative;
+  transition: var(--transition);
+}
+
+.stat-box::before {
+  content: '📊';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  opacity: 0.3;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-stadium);
+  border-left-color: var(--victory-gold);
+}
+
+.stat-box h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--grass-green);
+  text-transform: uppercase;
+}
+
+.stat-box p {
+  color: var(--stadium-gray);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Timeline - Estilo cronómetro */
+.timeline {
+  background: var(--ball-white);
+  padding: 3rem 2rem;
+  border-radius: 25px;
+  box-shadow: var(--shadow-ball);
+  margin-bottom: 3rem;
+  border: 3px solid var(--light-green);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(125, 176, 105, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border-radius: var(--border-radius);
+  border-left: 5px solid var(--field-green);
+  transition: var(--transition);
+}
+
+.timeline-item:hover {
+  background: linear-gradient(135deg, rgba(125, 176, 105, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-left-color: var(--victory-gold);
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.year {
+  background: var(--stadium-gradient);
+  color: var(--ball-white);
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  font-weight: 900;
+  font-size: 1.3rem;
+  margin-right: 2rem;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: var(--shadow-ball);
+  border: 2px solid var(--goal-yellow);
+}
+
+.timeline-item p {
+  color: var(--referee-black);
+  line-height: 1.7;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Secciones de listas - Estilo alineación */
+.legends, .current-stars, .fun-facts {
+  background: var(--ball-white);
+  padding: 3rem 2rem;
+  border-radius: 25px;
+  box-shadow: var(--shadow-ball);
+  margin-bottom: 3rem;
+  border-top: 5px solid var(--field-green);
+}
+
+.legends ul, .current-stars ul, .fun-facts ul {
+  list-style: none;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legends li, .current-stars li, .fun-facts li {
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--victory-gold);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: var(--transition);
+  position: relative;
+}
+
+.legends li::before {
+  content: '🏆';
+  margin-right: 10px;
+}
+
+.current-stars li::before {
+  content: '⭐';
+  margin-right: 10px;
+}
+
+.fun-facts li::before {
+  content: '⚽';
+  margin-right: 10px;
+}
+
+.legends li:hover, .current-stars li:hover, .fun-facts li:hover {
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  transform: translateX(10px);
+  border-left-color: var(--grass-green);
+}
+
+.legends strong, .current-stars strong {
+  color: var(--grass-green);
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 78px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 78px);
+    background: var(--ball-white);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    transition: var(--transition);
+    box-shadow: var(--shadow-stadium);
+    border-top: 3px solid var(--field-green);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .intro {
+    padding: 3rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .main-content {
+    padding: 1.5rem 15px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .stat-box, .legends, .current-stars, .fun-facts {
+    padding: 2rem 1.5rem;
+  }
+
+  .timeline {
+    padding: 2rem 1rem;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .year {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .explore-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .legends li, .current-stars li, .fun-facts li {
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .intro {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .stat-box, .legends, .current-stars, .fun-facts, .timeline {
+    padding: 1.5rem 1rem;
+  }
+
+  .timeline-item {
+    padding: 1rem;
+  }
+}
+
+/* Animaciones futbolísticas */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(30px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.9) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.intro {
+  animation: bounceIn 1s ease-out;
+}
+
+.stat-box, .timeline-item, .legends li, .current-stars li, .fun-facts li {
+  opacity: 0;
+  animation: bounceIn 0.8s ease-out forwards;
+}
+
+.stat-box:nth-child(2) { animation-delay: 0.2s; }
+.stat-box:nth-child(3) { animation-delay: 0.4s; }
+.timeline-item:nth-child(2) { animation-delay: 0.3s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item:nth-child(4) { animation-delay: 0.9s; }
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+/* Reset y variables futbolísticas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colores inspirados en el fútbol */
+  --grass-green: #2d5016;
+  --field-green: #4a7c59;
+  --light-green: #7fb069;
+  --ball-white: #ffffff;
+  --line-white: #f8f9fa;
+  --goal-yellow: #ffd60a;
+  --referee-black: #1a1a1a;
+  --sky-blue: #219ebc;
+  --stadium-gray: #495057;
+  --victory-gold: #ffb700;
+
+  /* Gradientes temáticos */
+  --field-gradient: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #7fb069 100%);
+  --stadium-gradient: linear-gradient(135deg, #495057 0%, #343a40 100%);
+  --gold-gradient: linear-gradient(135deg, #ffb700 0%, #ffd60a 100%);
+
+  /* Sombras */
+  --shadow-field: 0 4px 20px rgba(45, 80, 22, 0.3);
+  --shadow-ball: 0 8px 25px rgba(0, 0, 0, 0.2);
+  --shadow-stadium: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+  --border-radius: 15px;
+  --transition: all 0.3s ease;
+}
+
+/* Tipografía deportiva */
+body {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  line-height: 1.6;
+  color: var(--referee-black);
+  background:
+    radial-gradient(circle at 20% 80%, rgba(125, 176, 105, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Patrón de campo de fútbol sutil */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(90deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(74, 124, 89, 0.05) 50%, transparent 51%);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Navbar estilo estadio */
+.navbar {
+  background: var(--ball-white);
+  box-shadow: 0 2px 15px rgba(45, 80, 22, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid var(--field-green);
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--field-gradient);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--grass-green);
+  text-shadow: 2px 2px 4px rgba(45, 80, 22, 0.3);
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.logo::after {
+  content: '⚽';
+  font-size: 1.2rem;
+  margin-left: 8px;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--stadium-gray);
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+}
+
+.nav-link:hover {
+  background: var(--field-green);
+  color: var(--ball-white);
+  border-color: var(--grass-green);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--field-green);
+  border: none;
+  color: var(--ball-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--grass-green);
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 20px;
+}
+
+/* Intro - Estilo campo de fútbol */
+.intro {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--field-gradient);
+  color: var(--ball-white);
+  border-radius: 25px;
+  box-shadow: var(--shadow-field);
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.intro::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.explore-btn {
+  background: var(--gold-gradient);
+  color: var(--referee-black);
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-ball);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.explore-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 183, 0, 0.4);
+  background: linear-gradient(135deg, #ffd60a 0%, #ffb700 100%);
+}
+
+/* Secciones con estilo de tarjetas de jugador */
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--grass-green);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 80px;
+  height: 4px;
+  background: var(--goal-yellow);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Stats - Estilo marcador */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-box {
+  background: var(--ball-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-ball);
+  border-left: 6px solid var(--field-green);
+  position: relative;
+  transition: var(--transition);
+}
+
+.stat-box::before {
+  content: '📊';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  opacity: 0.3;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-stadium);
+  border-left-color: var(--victory-gold);
+}
+
+.stat-box h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--grass-green);
+  text-transform: uppercase;
+}
+
+.stat-box p {
+  color: var(--stadium-gray);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Timeline - Estilo cronómetro */
+.timeline {
+  background: var(--ball-white);
+  padding: 3rem 2rem;
+  border-radius: 25px;
+  box-shadow: var(--shadow-ball);
+  margin-bottom: 3rem;
+  border: 3px solid var(--light-green);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(125, 176, 105, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border-radius: var(--border-radius);
+  border-left: 5px solid var(--field-green);
+  transition: var(--transition);
+}
+
+.timeline-item:hover {
+  background: linear-gradient(135deg, rgba(125, 176, 105, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-left-color: var(--victory-gold);
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.year {
+  background: var(--stadium-gradient);
+  color: var(--ball-white);
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  font-weight: 900;
+  font-size: 1.3rem;
+  margin-right: 2rem;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: var(--shadow-ball);
+  border: 2px solid var(--goal-yellow);
+}
+
+.timeline-item p {
+  color: var(--referee-black);
+  line-height: 1.7;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Secciones de listas - Estilo alineación */
+.legends, .current-stars, .fun-facts {
+  background: var(--ball-white);
+  padding: 3rem 2rem;
+  border-radius: 25px;
+  box-shadow: var(--shadow-ball);
+  margin-bottom: 3rem;
+  border-top: 5px solid var(--field-green);
+}
+
+.legends ul, .current-stars ul, .fun-facts ul {
+  list-style: none;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legends li, .current-stars li, .fun-facts li {
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--victory-gold);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: var(--transition);
+  position: relative;
+}
+
+.legends li::before {
+  content: '🏆';
+  margin-right: 10px;
+}
+
+.current-stars li::before {
+  content: '⭐';
+  margin-right: 10px;
+}
+
+.fun-facts li::before {
+  content: '⚽';
+  margin-right: 10px;
+}
+
+.legends li:hover, .current-stars li:hover, .fun-facts li:hover {
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.2) 0%, rgba(255, 255, 255, 0.9) 100%);
+  transform: translateX(10px);
+  border-left-color: var(--grass-green);
+}
+
+.legends strong, .current-stars strong {
+  color: var(--grass-green);
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 78px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 78px);
+    background: var(--ball-white);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    transition: var(--transition);
+    box-shadow: var(--shadow-stadium);
+    border-top: 3px solid var(--field-green);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .intro {
+    padding: 3rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .main-content {
+    padding: 1.5rem 15px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .stat-box, .legends, .current-stars, .fun-facts {
+    padding: 2rem 1.5rem;
+  }
+
+  .timeline {
+    padding: 2rem 1rem;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .year {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .explore-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .legends li, .current-stars li, .fun-facts li {
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .intro {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .stat-box, .legends, .current-stars, .fun-facts, .timeline {
+    padding: 1.5rem 1rem;
+  }
+
+  .timeline-item {
+    padding: 1rem;
+  }
+}
+
+/* Animaciones futbolísticas */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(30px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.9) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.intro {
+  animation: bounceIn 1s ease-out;
+}
+
+.stat-box, .timeline-item, .legends li, .current-stars li, .fun-facts li {
+  opacity: 0;
+  animation: bounceIn 0.8s ease-out forwards;
+}
+
+.stat-box:nth-child(2) { animation-delay: 0.2s; }
+.stat-box:nth-child(3) { animation-delay: 0.4s; }
+.timeline-item:nth-child(2) { animation-delay: 0.3s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item:nth-child(4) { animation-delay: 0.9s; }
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}

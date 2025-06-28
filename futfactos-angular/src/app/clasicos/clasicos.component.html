@@ -1,0 +1,288 @@
+<main class="container mx-auto px-4 pt-24 pb-10">
+  <h2 class="text-4xl font-bold mb-6 text-red-900">Mejores Clásicos del Fútbol</h2>
+  <div class="clasico-section">
+    <!-- Clásico Colombiano -->
+    <div class="clasico-item" (click)="openModal('america-nacional')">
+      <div class="clasico-images">
+        <img src="https://i.pinimg.com/736x/8a/71/55/8a7155ca40482c27012efac4d134985e.jpg" alt="América">
+        <span class="vs">vs</span>
+        <img src="https://images.seeklogo.com/logo-png/16/1/club-atletico-nacional-de-medellin-logo-png_seeklogo-169187.png" alt="Nacional">
+      </div>
+      <div class="clasico-content">
+        <h3>Clásico Colombiano: América vs. Nacional</h3>
+        <p class="historia">Desde 1948, esta rivalidad entre Cali y Medellín ha generado más de 300 partidos, marcada por pasión y la Libertadores 2016 de Nacional.</p>
+        <p class="estadisticas">América: 150 victorias, Nacional: 140 victorias, 120 empates, 600+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Pascual Guerrero (Cali) / Atanasio Girardot (Medellín)</p>
+          <p><strong>Apodos:</strong> Diablos Rojos (América) - Rey de Copas (Nacional)</p>
+          <p><strong>Último encuentro:</strong> 2-2 (2023)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- El Clásico -->
+    <div class="clasico-item" (click)="openModal('real-barca')">
+      <div class="clasico-images">
+        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid">
+        <span class="vs">vs</span>
+        <img src="https://specials-images.forbesimg.com/imageserve/65f2d5c080790f47bcfa620f/960x0.jpg" alt="Barcelona">
+      </div>
+      <div class="clasico-content">
+        <h3>El Clásico: Real Madrid vs. Barcelona</h3>
+        <p class="historia">Desde 1902, este duelo refleja la rivalidad entre Madrid y Cataluña, con más de 250 partidos y 900 goles.</p>
+        <p class="estadisticas">Real Madrid: 100 victorias, Barcelona: 96 victorias, 54 empates</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Santiago Bernabéu / Camp Nou</p>
+          <p><strong>Jugador histórico:</strong> Lionel Messi (26 goles en Clásicos)</p>
+          <p><strong>Último encuentro:</strong> 3-2 Barcelona (2024)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Superclásico -->
+    <div class="clasico-item" (click)="openModal('river-boca')">
+      <div class="clasico-images">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ98KClHdxjY1BY5ouxpchF-Tcr6mGdRuMMA&s" alt="River Plate">
+        <span class="vs">vs</span>
+        <img src="https://www.futbolmundial.com/wp-content/uploads/2022/09/Boca-Juniors.jpeg" alt="Boca Juniors">
+      </div>
+      <div class="clasico-content">
+        <h3>Superclásico: River Plate vs. Boca Juniors</h3>
+        <p class="historia">Desde 1913, este clásico argentino es famoso por su intensidad, con la final de Libertadores 2018 en Madrid como hito.</p>
+        <p class="estadisticas">River: 90 victorias, Boca: 88 victorias, 70 empates, 700+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Monumental / La Bombonera</p>
+          <p><strong>Apodos:</strong> Millonarios (River) - Xeneizes (Boca)</p>
+          <p><strong>Último encuentro:</strong> 1-0 River (2023)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derby della Madonnina -->
+    <div class="clasico-item" (click)="openModal('milan-inter')">
+      <div class="clasico-images">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg" alt="AC Milan">
+        <span class="vs">vs</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Logo_of_FC_Inter_Milan_%281963-1979%29.svg/2048px-Logo_of_FC_Inter_Milan_%281963-1979%29.svg.png" alt="Inter Milan">
+      </div>
+      <div class="clasico-content">
+        <h3>Derby della Madonnina: AC Milan vs. Inter Milan</h3>
+        <p class="historia">Desde 1908, este duelo divide Milán, con más de 170 partidos y finales de Champions como la de 2003.</p>
+        <p class="estadisticas">AC Milan: 75 victorias, Inter: 72 victorias, 60 empates, 500+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> San Siro (compartido)</p>
+          <p><strong>Jugador histórico:</strong> Andriy Shevchenko (14 goles en derbis)</p>
+          <p><strong>Último encuentro:</strong> 1-0 Inter (2024)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Old Firm -->
+    <div class="clasico-item" (click)="openModal('celtic-rangers')">
+      <div class="clasico-images">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvBocs-LJEcAzKVZw5CtudsAyTTCQrj4og&s" alt="Celtic">
+        <span class="vs">vs</span>
+        <img src="https://play-lh.googleusercontent.com/ETLB9m5CYpzZesKZvV29ggnh557bZzDxCTM4-S62DRbTobWQ9-NzwYWi2T-tE1zcC6M" alt="Rangers">
+      </div>
+      <div class="clasico-content">
+        <h3>Old Firm: Celtic vs. Rangers</h3>
+        <p class="historia">Desde 1888, esta rivalidad escocesa mezcla fútbol y religión, con más de 400 encuentros.</p>
+        <p class="estadisticas">Celtic: 160 victorias, Rangers: 158 victorias, 82 empates, 1200+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Celtic Park / Ibrox Stadium</p>
+          <p><strong>Récord:</strong> 7-1 Celtic (1957)</p>
+          <p><strong>Último encuentro:</strong> 3-3 (2024)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clásico Capitalino -->
+    <div class="clasico-item" (click)="openModal('millos-santafe')">
+      <div class="clasico-images">
+        <img src="https://www.kienyke.com/sites/default/files/styles/interna_contenido_s/public/2023-05/millos%20%282%29.jpg?itok=yIhG0gRz" alt="Millonarios">
+        <span class="vs">vs</span>
+        <img src="https://cdn.conmebol.com/wp-content/uploads/2015/02/santa-fe.jpg" alt="Santa Fe">
+      </div>
+      <div class="clasico-content">
+        <h3>Clásico Capitalino: Millonarios vs. Santa Fe</h3>
+        <p class="historia">Desde 1948, este clásico bogotano ha generado más de 300 partidos, incluyendo finales locales.</p>
+        <p class="estadisticas">Millonarios: 120 victorias, Santa Fe: 110 victorias, 70 empates, 450+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> El Campín (compartido)</p>
+          <p><strong>Apodos:</strong> Embajador (Millos) - Cardenal (Santa Fe)</p>
+          <p><strong>Último encuentro:</strong> 1-0 Millonarios (2023)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derby de Manchester -->
+    <div class="clasico-item" (click)="openModal('manutd-mancity')">
+      <div class="clasico-images">
+        <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Manchester United">
+        <span class="vs">vs</span>
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Manchester City">
+      </div>
+      <div class="clasico-content">
+        <h3>Derby de Manchester: Manchester United vs. Manchester City</h3>
+        <p class="historia">Desde 1881, esta rivalidad divide Manchester, intensificada por el auge de City en la era moderna.</p>
+        <p class="estadisticas">United: 78 victorias, City: 60 victorias, 53 empates, 500+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Old Trafford / Etihad Stadium</p>
+          <p><strong>Récord:</strong> 6-1 City (2011)</p>
+          <p><strong>Último encuentro:</strong> 3-1 City (2024)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derbi de Merseyside -->
+    <div class="clasico-item" (click)="openModal('liverpool-everton')">
+      <div class="clasico-images">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" alt="Liverpool">
+        <span class="vs">vs</span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlPq8PhXHENg7psaKyo_tYnk-4TTOP4NtZNQ&s" alt="Everton">
+      </div>
+      <div class="clasico-content">
+        <h3>Derbi de Merseyside: Liverpool vs. Everton</h3>
+        <p class="historia">Desde 1894, este clásico de Liverpool es conocido por su pasión y partidos en Goodison Park y Anfield.</p>
+        <p class="estadisticas">Liverpool: 95 victorias, Everton: 67 victorias, 75 empates, 600+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Anfield / Goodison Park</p>
+          <p><strong>Apodos:</strong> The Reds (Liverpool) - The Toffees (Everton)</p>
+          <p><strong>Último encuentro:</strong> 2-0 Liverpool (2024)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fla-Flu -->
+    <div class="clasico-item" (click)="openModal('fla-flu')">
+      <div class="clasico-images">
+        <img src="https://lh3.googleusercontent.com/UlezGc68LRuCOq3jmsKA9NTEC2yHZUE-pD2ObluqjDOWSPxZlYOdOnzkfTG-dzeV2LGx8Dvg0ayROIEz9bYgjo-gDg=s1280-w1280-h800" alt="Flamengo">
+        <span class="vs">vs</span>
+        <img src="https://m.media-amazon.com/images/S/pv-target-images/c8fb81d1fcc7e4d14b647ba44cd47ad4cd74c66c4d77f62a22dd16607f99de6a.jpg" alt="Fluminense">
+      </div>
+      <div class="clasico-content">
+        <h3>Fla-Flu: Flamengo vs. Fluminense</h3>
+        <p class="historia">Desde 1912, este clásico carioca es uno de los más antiguos de Brasil, con gran rivalidad en el Maracaná.</p>
+        <p class="estadisticas">Flamengo: 130 victorias, Fluminense: 110 victorias, 90 empates, 800+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Maracaná (compartido)</p>
+          <p><strong>Récord asistencia:</strong> 194,603 espectadores (1963)</p>
+          <p><strong>Último encuentro:</strong> 2-0 Flamengo (2024)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clásico del Pacífico -->
+    <div class="clasico-item" (click)="openModal('pacifico')">
+      <div class="clasico-images">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Escudo_de_Am%C3%A9rica_de_Cali.svg/1200px-Escudo_de_Am%C3%A9rica_de_Cali.svg.png" alt="América de Cali">
+        <span class="vs">vs</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Escudo_deportivo_cali.svg/1200px-Escudo_deportivo_cali.svg.png" alt="Deportivo Cali">
+      </div>
+      <div class="clasico-content">
+        <h3>Clásico del Pacífico: América vs. Deportivo Cali</h3>
+        <p class="historia">Desde 1918, este clásico caleño es el más antiguo de Colombia, con más de 300 encuentros disputados.</p>
+        <p class="estadisticas">América: 120 victorias, Cali: 110 victorias, 80 empates, 500+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Pascual Guerrero (compartido)</p>
+          <p><strong>Apodos:</strong> Diablos Rojos (América) - Azucareros (Cali)</p>
+          <p><strong>Último encuentro:</strong> 1-1 (2023)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Superclásico Peruano -->
+    <div class="clasico-item" (click)="openModal('peruano')">
+      <div class="clasico-images">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Escudo_de_Alianza_Lima.svg/1200px-Escudo_de_Alianza_Lima.svg.png" alt="Alianza Lima">
+        <span class="vs">vs</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Escudo_de_Universitario_de_Deportes.svg/1200px-Escudo_de_Universitario_de_Deportes.svg.png" alt="Universitario">
+      </div>
+      <div class="clasico-content">
+        <h3>Superclásico Peruano: Alianza Lima vs. Universitario</h3>
+        <p class="historia">Desde 1928, este clásico limeño enfrenta al equipo popular (Alianza) contra el equipo de la clase alta (U).</p>
+        <p class="estadisticas">Alianza: 150 victorias, Universitario: 140 victorias, 100 empates, 600+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Monumental / Alejandro Villanueva</p>
+          <p><strong>Apodos:</strong> Íntimos (Alianza) - Cremas (Universitario)</p>
+          <p><strong>Último encuentro:</strong> 1-0 Alianza (2024)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clásico Paulista -->
+    <div class="clasico-item" (click)="openModal('paulista')">
+      <div class="clasico-images">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Sao_Paulo_FC_logo.svg/1200px-Sao_Paulo_FC_logo.svg.png" alt="São Paulo">
+        <span class="vs">vs</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Corinthians_simbolo.png/1200px-Corinthians_simbolo.png" alt="Corinthians">
+      </div>
+      <div class="clasico-content">
+        <h3>Clásico Paulista: São Paulo vs. Corinthians</h3>
+        <p class="historia">Desde 1930, este duelo paulista enfrenta a dos de los clubes más populares de Brasil.</p>
+        <p class="estadisticas">São Paulo: 120 victorias, Corinthians: 110 victorias, 90 empates, 500+ goles</p>
+        <div class="additional-info">
+          <p><strong>Estadio:</strong> Morumbi / Neo Química Arena</p>
+          <p><strong>Apodos:</strong> Tricolor (São Paulo) - Timão (Corinthians)</p>
+          <p><strong>Último encuentro:</strong> 2-1 Corinthians (2024)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal" [class.active]="modalActive">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeModal()">&times;</span>
+    <h3 class="modal-title">{{ modalData.title }}</h3>
+    <div class="modal-images">
+      <img [src]="modalData.team1Logo" [alt]="modalData.team1">
+      <span class="vs">vs</span>
+      <img [src]="modalData.team2Logo" [alt]="modalData.team2">
+    </div>
+    <div class="modal-body">
+      <h4>Mejores Partidos</h4>
+      <ul class="best-matches">
+        <li *ngFor="let match of modalData.bestMatches">
+          <strong>{{ match.date }}:</strong> {{ match.score }} - {{ match.description }}
+        </li>
+      </ul>
+
+      <h4>Estadísticas Clave</h4>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value">{{ modalData.stats.totalMatches }}</span>
+          <span class="stat-label">Partidos totales</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{ modalData.stats.totalGoals }}</span>
+          <span class="stat-label">Goles totales</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{ modalData.stats.highestScore }}</span>
+          <span class="stat-label">Resultado más amplio</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{ modalData.stats.lastMatch }}</span>
+          <span class="stat-label">Último encuentro</span>
+        </div>
+      </div>
+
+      <h4>Curiosidades</h4>
+      <p class="curiosities">{{ modalData.curiosities }}</p>
+
+      <h4>Jugadores Históricos</h4>
+      <div class="players-grid">
+        <div class="player" *ngFor="let player of modalData.historicPlayers">
+          <img [src]="player.image" [alt]="player.name">
+          <div class="player-info">
+            <strong>{{ player.name }}</strong>
+            <span>{{ player.team }}</span>
+            <span>{{ player.goals }} goles en clásicos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
